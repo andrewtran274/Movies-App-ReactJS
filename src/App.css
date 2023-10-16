@@ -1,0 +1,147 @@
+.container {
+  width: 1200px;
+  max-width: calc(100% - 40px);
+  /* background-color: red; */
+  margin: 0 auto;
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  /* background-color: #fff; */
+}
+
+.Header .logo {
+  font-weight: 700;
+  font-size: 25px;
+  cursor: pointer;
+  color: aliceblue;
+}
+
+.Header .logo span {
+  color: rgb(0, 119, 255);
+}
+
+.Header form {
+  position: relative;
+  width: 500px;
+  max-width: calc(60% - 20px);
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.Header form label {
+  position: absolute;
+  background-color: rgb(0, 119, 255);
+  height: 100%;
+  width: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.Header form input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px 10px 10px 60px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.heading {
+  font-weight: 500;
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+.movies-list {
+  display: grid;
+  gap: 20px;
+  padding-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card-movie {
+  width: 280px;
+  height: 400px;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.6s;
+}
+
+.card-movie img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-movie .card-info {
+  position: absolute;
+  /* background-color: #fff; */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgb(0, 0, 0, 1) 0%, transparent 100%);
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  transition: all 0.6s ease-in-out;
+}
+
+.card-movie:hover .card-info {
+  transform: translate(0, -100%);
+}
+
+.card-movie:hover {
+  transform: translateY(-10px);
+}
+
+.card-info .title {
+  font-weight: 500;
+  font-size: 30px;
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: pre-wrap;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-info .des {
+  font-size: 15px;
+  opacity: 0.7;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  white-space: pre-wrap;
+}
+
+.card-info .rating .icon {
+  color: yellow;
+  cursor: pointer;
+}
+
+.card-info .rating {
+  display: flex;
+  align-items: center;
+}
+
+.card-info .rating .rate {
+  margin-left: 10px;
+  font-weight: 500;
+  color: rgb(0, 160, 252);
+}

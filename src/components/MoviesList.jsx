@@ -10,6 +10,8 @@ const MoviesList = ({ searchValue }) => {
 
   const [dataMovies, setDataMovies] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+
   const getDataMovies = async () => {
     try {
       const response = await axios.get(`${API_URL}`);
@@ -31,24 +33,45 @@ const MoviesList = ({ searchValue }) => {
   };
 
   useEffect(() => {
-    getDataMovies();
+    setLoading(true);
+    setTimeout(() => {
+      getDataMovies();
+      setLoading(false);
+    }, 2000);
+
+    return clearTimeout();
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     if (searchValue == "") {
-      getDataMovies();
+      setTimeout(() => {
+        getDataMovies();
+        setLoading(false);
+      }, 2000);
     } else {
-      getDataMoviesSearch();
+      setTimeout(() => {
+        getDataMoviesSearch();
+        setLoading(false);
+      }, 2000);
     }
+
+    return clearTimeout();
   }, [searchValue]);
   return (
     <div className="movie-list">
       <div className="heading">Best Of Movies</div>
-      <div className="movies-list">
-        {dataMovies.map((movie) => (
-          <CardMovie key={movie.id} {...movie} />
-        ))}
-      </div>
+      {loading ? (
+        <div className="loading-spiner">
+          <span class="loader"></span>
+        </div>
+      ) : (
+        <div className="movies-list">
+          {dataMovies.map((movie) => (
+            <CardMovie key={movie.id} {...movie} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

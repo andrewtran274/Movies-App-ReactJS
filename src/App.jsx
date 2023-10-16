@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import "./App.css";
 import MoviesList from "./components/MoviesList";
 
 const App = () => {
-  // const API_SEARCH = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&query=`;
-
+  const [searchValue, setSearchValue] = useState("");
   return (
     <div className="container">
-      <Header />
-      <MoviesList />
+      <Header setSearchValue={setSearchValue} />
+      <MoviesList searchValue={searchValue} />
     </div>
   );
 };

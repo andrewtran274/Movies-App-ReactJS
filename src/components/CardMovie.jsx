@@ -10,7 +10,6 @@ const CardMovie = ({
   title,
   vote_average,
 }) => {
-  console.log(overview, title, vote_average);
   return (
     <div className="card-movie">
       <img src={`${API_IMG}${poster_path}`} alt="" />

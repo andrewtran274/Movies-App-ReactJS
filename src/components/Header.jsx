@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-const Header = () => {
+const Header = ({ setSearchValue }) => {
+  const [value, setValue] = useState("");
+
+  const handleSearchValue = () => {
+    if (value === "") {
+      return;
+    }
+    const text = value.trim();
+    setSearchValue(text);
+  };
+
+  if (value === "") {
+    setSearchValue(value);
+  }
+
   return (
     <div className="Header">
       <div className="logo">
@@ -9,10 +23,15 @@ const Header = () => {
       </div>
 
       <form action="">
-        <label htmlFor="search">
+        <label htmlFor="search" onClick={handleSearchValue}>
           <AiOutlineSearch />
         </label>
-        <input type="text" id="search" />
+        <input
+          type="text"
+          id="search"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
       </form>
     </div>
   );

@@ -5,7 +5,9 @@ import CardMovie from "./CardMovie";
 const API_KEY = "12382fd24de464c9617822243688dc23";
 const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
 
-const MoviesList = () => {
+const MoviesList = ({ searchValue }) => {
+  const API_SEARCH = `https://api.themoviedb.org/3/search/movie?query=${searchValue}&api_key=${API_KEY}`;
+
   const [dataMovies, setDataMovies] = useState([]);
 
   const getDataMovies = async () => {
@@ -13,14 +15,32 @@ const MoviesList = () => {
       const response = await axios.get(`${API_URL}`);
       const data = await response.data;
       setDataMovies(data.results);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const getDataMoviesSearch = async () => {
+    try {
+      const response = await axios.get(`${API_SEARCH}`);
+      const data = await response.data;
+      setDataMovies(data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getDataMovies();
   }, []);
+
+  useEffect(() => {
+    if (searchValue == "") {
+      getDataMovies();
+    } else {
+      getDataMoviesSearch();
+    }
+  }, [searchValue]);
   return (
     <div className="movie-list">
       <div className="heading">Best Of Movies</div>

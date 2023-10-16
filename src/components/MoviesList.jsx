@@ -50,8 +50,8 @@ const MoviesList = ({ searchValue }) => {
         setLoading(false);
       }, 2000);
     } else {
+      getDataMoviesSearch();
       setTimeout(() => {
-        getDataMoviesSearch();
         setLoading(false);
       }, 2000);
     }
